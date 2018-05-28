@@ -7,6 +7,71 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="Gray">
+            
+        </Grid>
+        <!-- Freunde tab -->
+        <Grid Grid.Column="1" Background="Gray">
+            <Label VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Width="50" HorizontalContentAlignment="Center">Alex</Label>
+        </Grid>
         
+        <!-- Menu -->
+        <Grid Grid.Row="1" Background="Orange">
+            <Label>Menü</Label>
+        </Grid>
+        
+        <!-- Stundenplan -->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="8:00"/>
+            <Label Grid.Row="1" Content="8:45"/>
+            <Label Grid.Row="2" Content="9:55"/>
+            <Label Grid.Row="3" Content="10:40"/>
+            <Label Grid.Row="4" Content="11:45"/>
+            <Label Grid.Row="5" Content="12:30"/>
+            <Label Grid.Row="6" Content="14:00"/>
+            <Label Grid.Row="7" Content="14:45"/>
+            <Label Grid.Row="8" Content="15:45"/>
+            <Label Grid.Row="9" Content="16:30"/>
+            <Label Grid.Row="10" Content="17:30"/>
+            <Label Grid.Row="11" Content="18:15"/>
+            <Label Grid.Row="12" Content="19:15"/>
+            <Label Grid.Row="13" Content="20:00"/>
+
+        </Grid>
     </Grid>
 </Window>
