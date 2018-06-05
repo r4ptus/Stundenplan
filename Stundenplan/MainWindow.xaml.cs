@@ -67,6 +67,8 @@ namespace Stundenplan
             {
                 Button b = new Button();
                 b.Click += AddToTable_Click;
+                b.Content = $"{f.Name.ToString()}\n{f.Raum}";
+                b.HorizontalContentAlignment = HorizontalAlignment.Center;
                 Grid.SetColumn(b, (int)f.Wochentag + 1);
                 Grid.SetRow(b, (int)f.Startzeit + 1);
                 Grid.SetRowSpan(b, f.Length);
