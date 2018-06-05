@@ -1,0 +1,35 @@
+﻿<Window x:Class="Stundenplan.EditFach"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stundenplan"
+        mc:Ignorable="d"
+        Title="EditFach" Height="400" Width="400">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Label Content="Fach"/>
+                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Raum: "/>
+                <TextBox x:Name="tbRaum" Width="100"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Info: "/>
+                <TextBox x:Name="tbInfo" Width="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Länge"/>
+                <TextBox x:Name="tbLänge" Width="20"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Fällt aus: "/>
+                <RadioButton x:Name="rbFaelltAus" />
+            </WrapPanel>
+            
+            <Button Content="Speichern" Width="100" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

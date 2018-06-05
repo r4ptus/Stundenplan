@@ -26,18 +26,22 @@
         
         <!-- Menu -->
         <Grid Grid.Row="1" Background="Orange">
-            <Label>Menü</Label>
+            <StackPanel>
+                <Label>Fächer</Label>
+                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="5"/>
+            </StackPanel>
+            <Button VerticalAlignment="Bottom" Content="Fach Hinzufügen" Margin="5" Click="AddFach_Click"/>
         </Grid>
         
         <!-- Stundenplan -->
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="gStundenplan">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
@@ -55,22 +59,29 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Content="8:00"/>
-            <Label Grid.Row="1" Content="8:45"/>
-            <Label Grid.Row="2" Content="9:55"/>
-            <Label Grid.Row="3" Content="10:40"/>
-            <Label Grid.Row="4" Content="11:45"/>
-            <Label Grid.Row="5" Content="12:30"/>
-            <Label Grid.Row="6" Content="14:00"/>
-            <Label Grid.Row="7" Content="14:45"/>
-            <Label Grid.Row="8" Content="15:45"/>
-            <Label Grid.Row="9" Content="16:30"/>
-            <Label Grid.Row="10" Content="17:30"/>
-            <Label Grid.Row="11" Content="18:15"/>
-            <Label Grid.Row="12" Content="19:15"/>
-            <Label Grid.Row="13" Content="20:00"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Montag" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Dienstag" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="0" Grid.Column="3" Content="Mittwoch" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="0" Grid.Column="4" Content="Donnerstag" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="0" Grid.Column="5" Content="Freitag" HorizontalContentAlignment="Center"/>
+            
+            <Label Grid.Row="1" Content="8:00"/>
+            <Label Grid.Row="2" Content="8:45"/>
+            <Label Grid.Row="3" Content="9:55"/>
+            <Label Grid.Row="4" Content="10:40"/>
+            <Label Grid.Row="5" Content="11:45"/>
+            <Label Grid.Row="6" Content="12:30"/>
+            <Label Grid.Row="7" Content="14:00"/>
+            <Label Grid.Row="8" Content="14:45"/>
+            <Label Grid.Row="9" Content="15:45"/>
+            <Label Grid.Row="10" Content="16:30"/>
+            <Label Grid.Row="11" Content="17:30"/>
+            <Label Grid.Row="12" Content="18:15"/>
+            <Label Grid.Row="13" Content="19:15"/>
+            <Label Grid.Row="14" Content="20:00"/>
 
         </Grid>
     </Grid>
