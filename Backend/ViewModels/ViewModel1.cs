@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace Backend.ViewModels
 {
-    public class ViewModel1
+    public class ViewModel1 : BaseNotificationClass
     {
+
         public ObservableCollection<Fach> Fächer { get; set; }
-        public ObservableCollection<Fach> TimeTable { get; set; }
+        public Dictionary<string,Fach> FachDictionary { get; set; }
         public Fach ToBeAdded { get; set; }
 
         public ViewModel1()
         {
             Fächer = new ObservableCollection<Fach>();
-            TimeTable = new ObservableCollection<Fach>();
+            FachDictionary = new Dictionary<string, Fach>();
         }
     }
 }

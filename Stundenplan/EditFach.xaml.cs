@@ -24,23 +24,45 @@ namespace Stundenplan
         int row = 1; //Startzeit der Stunde 
         int col = 1; //Wochentag
 
-        public ViewModel1 ViewModel => DataContext as ViewModel1;
+        Button b;
+        Fach f;
 
-        public EditFach( int c,int r)//Tag und uhrzeit
+        public ViewModel1 ViewModel;
+
+        public EditFach( int c,int r,Button b,ViewModel1 v)//Tag und uhrzeit
         {
             InitializeComponent();
+            ViewModel = v;
+            DataContext = ViewModel;
             col = c;
             row = r;
+            this.b = b;
+            if(ViewModel.FachDictionary.ContainsKey(b.Name))
+            {
+                f = ViewModel.FachDictionary[b.Name];
+            }
+            if(f!=null)
+            {
+                cbxFächer.SelectedValue = f.Name;
+                tbRaum.Text = f.Raum;
+                tbInfo.Text = f.Info;
+                tbLänge.Text = f.Length.ToString();
+            }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.TimeTable.Add(new Fach {
+            f = new Fach
+            {
                 Name = cbxFächer.SelectedValue.ToString(),
-                Raum = tbRaum.Text, Info = tbInfo.Text,
+                Raum = tbRaum.Text,
+                Info = tbInfo.Text,
                 Length = Int32.Parse(tbLänge.Text), //Anzahl der Stunden
-                FindetStatt = (bool)rbFaelltAus.IsChecked,
-                Startzeit = (Fach.StartZeit)row-1,
-                Wochentag = (Fach.WochenTag)col-1});
+                FälltAus = (bool)rbFaelltAus.IsChecked,
+                Startzeit = (Fach.StartZeit)row - 1,
+                Wochentag = (Fach.WochenTag)col - 1
+            };
+            ViewModel.FachDictionary[b.Name] = f;
+            MainWindow.UpdateFach(f);
             Close();
         }
     }
