@@ -10,7 +10,7 @@
         <StackPanel>
             <WrapPanel>
                 <Label Content="Fach"/>
-                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Alle}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
             </WrapPanel>
             <WrapPanel>
                 <Label Content="Raum: "/>

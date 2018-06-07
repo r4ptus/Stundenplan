@@ -34,6 +34,10 @@ namespace Stundenplan
             InitializeComponent();
             ViewModel = v;
             DataContext = ViewModel;
+            List<Fach> l = new List<Fach>();
+            l.AddRange(ViewModel.Fächer);
+            l.AddRange(ViewModel.Übungen);
+            ViewModel.Alle = new System.Collections.ObjectModel.ObservableCollection<Fach>(l);
             col = c;
             row = r;
             this.b = b;

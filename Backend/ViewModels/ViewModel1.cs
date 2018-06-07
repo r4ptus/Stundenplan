@@ -64,6 +64,7 @@ namespace Backend.ViewModels
         }
         public ObservableCollection<Fach> Fächer { get; set; }
         public ObservableCollection<Fach> Übungen { get; set; }
+        public ObservableCollection<Fach> Alle { get; set; }
         public ObservableCollection<User> Freunde{ get; set; }
         public Dictionary<string,Fach> FachDictionary { get; set; }
         public Fach ToBeAdded { get; set; }
@@ -72,6 +73,7 @@ namespace Backend.ViewModels
         {
             Fächer = new ObservableCollection<Fach>();
             Übungen = new ObservableCollection<Fach>();
+            Alle = new ObservableCollection<Fach>();
             FachDictionary = new Dictionary<string, Fach>();
             DateTime startOfWeek = DateTime.Today.AddDays(
                 (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
