@@ -29,6 +29,7 @@ namespace Stundenplan
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.Fächer.Add(new Backend.Models.Fach { Name = tbName.Text, });
+            ViewModel.Übungen.Add(new Backend.Models.Fach { Name = tbName.Text + "_Ü" });
             Close();
         }
     }

@@ -45,6 +45,7 @@ namespace Stundenplan
                     Grid.SetColumn(b, j);
                     Grid.SetRow(b, i);
                     Grid.SetZIndex(b, 1);
+                    RegisterName(b.Name, b);
                     gStundenplan.Children.Add(b);
                 }
             }        
@@ -63,21 +64,53 @@ namespace Stundenplan
 
         public static void UpdateFach(Fach f)
         {
-            btn.Content = $"{f.Name.ToString()}\n{f.Raum}";
-            btn.HorizontalContentAlignment = HorizontalAlignment.Center;
-            btn.Background = Brushes.Orange;
-            if(f.Info!=""&&f.Info!=null)
+            if (f != null)
             {
-                btn.BorderBrush = Brushes.Red;
+                btn.Content = $"{f.Name.ToString()}\n{f.Raum}";
+                btn.HorizontalContentAlignment = HorizontalAlignment.Center;
+                btn.Background = Brushes.Orange;
+                if (f.Info != "" && f.Info != null)
+                {
+                    btn.BorderBrush = Brushes.Red;
+                }
+                if (f.FälltAus)
+                {
+                    btn.Background = Brushes.LightGray;
+                }
+                Grid.SetZIndex(btn, 5);
+                Grid.SetRowSpan(btn, f.Length);
             }
-            if(f.FälltAus)
+            else
             {
-                btn.Background = Brushes.LightGray;
+                btn.Content = "";
+                btn.Background = Brushes.White;
+                btn.BorderBrush = Brushes.Black;
+                Grid.SetZIndex(btn, 1);
+                Grid.SetRowSpan(btn,1);
             }
-            Grid.SetZIndex(btn, 5);
-            Grid.SetColumn(btn, (int)f.Wochentag + 1);
-            Grid.SetRow(btn, (int)f.Startzeit + 1);
-            Grid.SetRowSpan(btn, f.Length);
+        }
+
+        private void DrawTable()
+        {
+            foreach(KeyValuePair<string,Fach> entry in _viewModel1.FachDictionary)
+            {
+                btn = (Button)FindName(entry.Key.ToString());
+                btn.Content = $"{entry.Value.Name.ToString()}\n{entry.Value.Raum}";
+                btn.HorizontalContentAlignment = HorizontalAlignment.Center;
+                btn.Background = Brushes.Orange;
+                if (entry.Value.Info != "" && entry.Value.Info != null)
+                {
+                    btn.BorderBrush = Brushes.Red;
+                }
+                if (entry.Value.FälltAus)
+                {
+                    btn.Background = Brushes.LightGray;
+                }
+                Grid.SetZIndex(btn, 5);
+                Grid.SetColumn(btn, (int)entry.Value.Wochentag + 1);
+                Grid.SetRow(btn, (int)entry.Value.Startzeit + 1);
+                Grid.SetRowSpan(btn, entry.Value.Length);
+            }
         }
 
         private void AddFach_Click(object sender, RoutedEventArgs e)

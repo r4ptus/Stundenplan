@@ -48,6 +48,8 @@ namespace Stundenplan
                 tbInfo.Text = f.Info;
                 tbLänge.Text = f.Length.ToString();
             }
+            if (tbLänge.Text == null || tbLänge.Text == "")
+                tbLänge.Text = "2";
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +65,13 @@ namespace Stundenplan
             };
             ViewModel.FachDictionary[b.Name] = f;
             MainWindow.UpdateFach(f);
+            Close();
+        }
+
+        private void Löschen_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.FachDictionary.Remove(b.Name);
+            MainWindow.UpdateFach(null);
             Close();
         }
     }

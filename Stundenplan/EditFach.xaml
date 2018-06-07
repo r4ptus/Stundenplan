@@ -28,8 +28,11 @@
                 <Label Content="Fällt aus: "/>
                 <RadioButton x:Name="rbFaelltAus" />
             </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Content="Löschen" Width="100" Click="Löschen_Click" Margin="0,0,5,0"/>
+                <Button Content="Speichern" Width="100" Click="Button_Click" Margin="5,0,0,0"/>
+            </WrapPanel>
             
-            <Button Content="Speichern" Width="100" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

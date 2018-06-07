@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Backend.Models
 {
-    class User
+    public class User
     {
-        string Name { get; set; }
-        Woche StundenplanWoche { get; set; }
+        public string Name { get; set; }
+        public Dictionary<string,Fach> Stundenplan { get; set; }
+        public User()
+        {
+            Stundenplan = new Dictionary<string, Fach>();
+        }
     }
 }
