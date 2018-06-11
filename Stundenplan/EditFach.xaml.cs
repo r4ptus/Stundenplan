@@ -41,40 +41,51 @@ namespace Stundenplan
             col = c;
             row = r;
             this.b = b;
-            if(ViewModel.FachDictionary.ContainsKey(b.Name))
+            if(ViewModel.CurrentUser.Stundenplan.ContainsKey(b.Name))
             {
-                f = ViewModel.FachDictionary[b.Name];
+                f = ViewModel.CurrentUser.Stundenplan[b.Name];
             }
-            if(f!=null)
+            if(f!=null)//Setzt die vorhanden Properies
             {
                 cbxFächer.SelectedValue = f.Name;
                 tbRaum.Text = f.Raum;
                 tbInfo.Text = f.Info;
                 tbLänge.Text = f.Length.ToString();
             }
-            if (tbLänge.Text == null || tbLänge.Text == "")
+            if (tbLänge.Text == null || tbLänge.Text.Equals(""))//
                 tbLänge.Text = "2";
         }
+        /**
+         * Fügt das Fach zum Dictionary hinzu und schließt das fenster
+         **/
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            f = new Fach
+            if (cbxFächer.SelectedItem != null)
             {
-                Name = cbxFächer.SelectedValue.ToString(),
-                Raum = tbRaum.Text,
-                Info = tbInfo.Text,
-                Length = Int32.Parse(tbLänge.Text), //Anzahl der Stunden
-                FälltAus = (bool)rbFaelltAus.IsChecked,
-                Startzeit = (Fach.StartZeit)row - 1,
-                Wochentag = (Fach.WochenTag)col - 1
-            };
-            ViewModel.FachDictionary[b.Name] = f;
-            MainWindow.UpdateFach(f);
-            Close();
+                f = new Fach
+                {
+                    Name = cbxFächer.SelectedValue.ToString(),
+                    Raum = tbRaum.Text,
+                    Info = tbInfo.Text,
+                    FälltAus = (bool)rbFaelltAus.IsChecked,
+                    Startzeit = (Fach.StartZeit)row - 1,
+                    Wochentag = (Fach.WochenTag)col - 1
+                };
+                if(tbLänge.Text!=null && tbLänge.Text.Equals(""))//checking for userinput
+                {
+                    f.Length = 2;
+                }
+                ViewModel.CurrentUser.Stundenplan[b.Name] = f;
+                MainWindow.UpdateFach(f);
+                Close();
+            }
         }
-
+        /**
+         * Löscht das jeweilige Fach
+         **/
         private void Löschen_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.FachDictionary.Remove(b.Name);
+            ViewModel.CurrentUser.Stundenplan.Remove(b.Name);
             MainWindow.UpdateFach(null);
             Close();
         }

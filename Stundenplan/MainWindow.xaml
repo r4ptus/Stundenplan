@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Stundenplan"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,12 +18,25 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Background="Gray">
-            
+            <Label Content="Dein Stundenplan" FontSize="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
         <!-- Freunde tab -->
         <Grid Grid.Column="1" Background="Gray">
-            <Label VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Width="50" HorizontalContentAlignment="Center">Alex</Label>
-            <Button Content="+" Background="Gray" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="5,0"/>
+            <ItemsControl x:Name="iControl" ItemsSource="{Binding DeineFreunde}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Left"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" Width="50" Height="30" Background="Gray" BorderBrush="Black" Click="ChangeTimeTable_Click"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button Content="+" Background="Gray" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="5,0" Click="AddFriend_Click"/>
         </Grid>
         
         <!-- Menu -->

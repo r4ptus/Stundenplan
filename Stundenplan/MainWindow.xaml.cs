@@ -51,6 +51,9 @@ namespace Stundenplan
             }        
         }
 
+        /**
+        * Ruft das Edit Window auf und fügt ein Fach zum Stundenplan hinzu
+        **/
         private void AddToTable_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
@@ -61,7 +64,9 @@ namespace Stundenplan
             }; //Zelle des gecklickten Buttons
             editFach.ShowDialog();
         }
-
+        /**
+         * Updated das Fach nach einer Änderung
+         **/
         public static void UpdateFach(Fach f)
         {
             if (f != null)
@@ -69,6 +74,7 @@ namespace Stundenplan
                 btn.Content = $"{f.Name.ToString()}\n{f.Raum}";
                 btn.HorizontalContentAlignment = HorizontalAlignment.Center;
                 btn.Background = Brushes.Orange;
+                btn.BorderBrush = Brushes.Black;
                 if (f.Info != "" && f.Info != null)
                 {
                     btn.BorderBrush = Brushes.Red;
@@ -89,10 +95,12 @@ namespace Stundenplan
                 Grid.SetRowSpan(btn,1);
             }
         }
-
-        private void DrawTable()
+        /**
+        * Zeichnet einen kompletten Stundenplan
+        **/
+        private void DrawTable(Dictionary<string,Fach> dic)
         {
-            foreach(KeyValuePair<string,Fach> entry in _viewModel1.FachDictionary)
+            foreach(KeyValuePair<string,Fach> entry in dic)
             {
                 btn = (Button)FindName(entry.Key.ToString());
                 btn.Content = $"{entry.Value.Name.ToString()}\n{entry.Value.Raum}";
@@ -112,13 +120,49 @@ namespace Stundenplan
                 Grid.SetRowSpan(btn, entry.Value.Length);
             }
         }
-
+        /**
+         * Öffnet das AddFach window und fügt ein neues Fach und die jeweilige Übung hinzu
+         **/
         private void AddFach_Click(object sender, RoutedEventArgs e)
         {
             AddFach addFach = new AddFach();
             addFach.Owner = this;
             addFach.DataContext = _viewModel1;
             addFach.ShowDialog();
+        }
+        /**
+         * Fügt einen Freund zu deinen persönlichen freunden hinzu
+         **/
+        private void AddFriend_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel1.DeineFreunde.Add(new User { Name = "Neu" });//placeholder
+        }
+        /**
+         * zeigt dir den Stundenplan von einem Freund
+         **/
+        private void ChangeTimeTable_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTable();
+            User u = ((FrameworkElement)sender).DataContext as User;
+            DrawTable(u.Stundenplan);
+        }
+        /**
+         * setzt die komplette Tabelle zurück auf standart
+         **/
+        private void ClearTable()
+        {
+            for (int i = 1; i <= 14; i++)
+            {
+                for (int j = 1; j <= 5; j++)
+                {
+                    Button btn = (Button)FindName("btn"+i.ToString()+j.ToString());
+                    btn.Content = "";
+                    btn.Background = Brushes.White;
+                    btn.BorderBrush = Brushes.Black;
+                    Grid.SetZIndex(btn, 1);
+                    Grid.SetRowSpan(btn, 1);
+                }
+            }
         }
     }
 }

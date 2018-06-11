@@ -16,6 +16,7 @@ namespace Backend.ViewModels
         private string _mi;
         private string _do;
         private string _fr;
+        private User _currentUser;
 
         public string Montag
         {
@@ -62,19 +63,34 @@ namespace Backend.ViewModels
                 OnPropertyChanged(nameof(Freitag));
             }
         }
-        public ObservableCollection<Fach> Fächer { get; set; }
-        public ObservableCollection<Fach> Übungen { get; set; }
-        public ObservableCollection<Fach> Alle { get; set; }
-        public ObservableCollection<User> Freunde{ get; set; }
-        public Dictionary<string,Fach> FachDictionary { get; set; }
-        public Fach ToBeAdded { get; set; }
+        public User CurrentUser
+        {
+            get { return _currentUser; }
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
+        public ObservableCollection<Fach> Fächer { get; set; } //Liste von allen Fächern 
+        public ObservableCollection<Fach> Übungen { get; set; } // Liste von allen Übungen
+        public ObservableCollection<Fach> Alle { get; set; } //gemeinsame Liste von Fächern und Übungen
+        public ObservableCollection<User> DeineFreunde { get; set; } //User die du hinzugefügt hast
+        public ObservableCollection<User> AlleUser { get; set; } //Alle verfügbaren User
 
         public ViewModel1()
         {
-            Fächer = new ObservableCollection<Fach>();
-            Übungen = new ObservableCollection<Fach>();
+            //Initialisierung aller Collections
+            Fächer = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
+            Übungen = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
             Alle = new ObservableCollection<Fach>();
-            FachDictionary = new Dictionary<string, Fach>();
+            AlleUser = new ObservableCollection<User>();//wird aus Datenbank gefüllt
+            //Dein Stundenplan du bistauch ein User
+            DeineFreunde = new ObservableCollection<User>
+            {
+                new User { Name = "Du" }
+            };
+            //Datumsberechnung
             DateTime startOfWeek = DateTime.Today.AddDays(
                 (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
                 (int)DateTime.Today.DayOfWeek);
@@ -84,6 +100,8 @@ namespace Backend.ViewModels
             Mittwoch = "Mittwoch, " + string.Join("", Enumerable.Range(0, 1).Select(i => startOfWeek.AddDays(2).ToString("dd.MM")));
             Donnerstag = "Donnerstag, " + string.Join("", Enumerable.Range(0, 1).Select(i => startOfWeek.AddDays(3).ToString("dd.MM")));
             Freitag = "Freitag, " + string.Join("", Enumerable.Range(0, 1).Select(i => startOfWeek.AddDays(4).ToString("dd.MM")));
+
+            CurrentUser = DeineFreunde.First(u => u.Name.Equals("Du"));
         }
     }
 }
