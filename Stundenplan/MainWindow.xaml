@@ -18,25 +18,25 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Background="Gray">
-            <Label Content="Dein Stundenplan" FontSize="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Dein Stundenplan" FontSize="11" Foreground="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
         <!-- Freunde tab -->
         <Grid Grid.Column="1" Background="Gray">
             <ItemsControl x:Name="iControl" ItemsSource="{Binding DeineFreunde}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Left"/>
+                        <WrapPanel HorizontalAlignment="Left" FocusManager.IsFocusScope="True"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Name}" Width="50" Height="30" Background="Gray" BorderBrush="Black" Click="ChangeTimeTable_Click"/>
+                        <Button Content="{Binding Name}" Width="50" Height="30" Click="ChangeTimeTable_Click" Style="{DynamicResource OrangeText}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <Button Content="+" Background="Gray" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="5,0" Click="AddFriend_Click"/>
+            <Button Content="+" Background="Gray" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="5,0" Click="AddFriend_Click" Style="{DynamicResource AddBtn}"/>
         </Grid>
         
         <!-- Menu -->
@@ -47,7 +47,7 @@
                 <Label>Übungen</Label>
                 <ComboBox x:Name="cbxÜbungen" ItemsSource="{Binding Übungen}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="5"/>
             </StackPanel>
-            <Button VerticalAlignment="Bottom" Content="Fach Hinzufügen" Margin="5" Click="AddFach_Click"/>
+            <Button VerticalAlignment="Bottom" Content="Fach Hinzufügen" Height="25" Margin="2,5" Click="AddFach_Click" Style="{DynamicResource Orange}"/>
         </Grid>
         
         <!-- Stundenplan -->

@@ -34,7 +34,9 @@ namespace Stundenplan
             InitializeComponent();
             DataContext = _viewModel1;
 
-            for(int i = 1; i<=14;i++)
+            this.Loaded += new RoutedEventHandler(ThisWindowLoaded);
+
+            for (int i = 1; i<=14;i++)
             {
                 for(int j = 1;j<=5;j++)
                 {
@@ -48,8 +50,9 @@ namespace Stundenplan
                     RegisterName(b.Name, b);
                     gStundenplan.Children.Add(b);
                 }
-            }        
+            }
         }
+
 
         /**
         * Ruft das Edit Window auf und fügt ein Fach zum Stundenplan hinzu
@@ -163,6 +166,36 @@ namespace Stundenplan
                     Grid.SetRowSpan(btn, 1);
                 }
             }
+        }
+        /**
+         * Finds Visual Child of an itemscontrol in our case the first button of icontrol
+         **/
+        private static T FindVisualChild<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        return (T)child;
+                    }
+
+                    T childItem = FindVisualChild<T>(child);
+                    if (childItem != null)
+                        return childItem;
+                }
+            }
+            return null;
+        }
+        /**
+         * WindowLoaded event Function is triggered when window is loaded
+         **/
+        private void ThisWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            var textbox = FindVisualChild<Button>(iControl.ItemContainerGenerator.ContainerFromIndex(0));
+            FocusManager.SetFocusedElement(iControl, textbox);
         }
     }
 }
