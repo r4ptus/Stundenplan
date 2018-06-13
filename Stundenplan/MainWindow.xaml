@@ -38,18 +38,16 @@
 
             <Button Content="+" Background="Gray" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="5,0" Click="AddFriend_Click" Style="{DynamicResource AddBtn}"/>
         </Grid>
-        
+
         <!-- Menu -->
         <Grid Grid.Row="1" Background="Orange">
             <StackPanel>
                 <Label>Fächer</Label>
-                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="5"/>
-                <Label>Übungen</Label>
-                <ComboBox x:Name="cbxÜbungen" ItemsSource="{Binding Übungen}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="5"/>
+                <ComboBox x:Name="cbxFächer"  ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="2.5"/>
             </StackPanel>
             <Button VerticalAlignment="Bottom" Content="Fach Hinzufügen" Height="25" Margin="2,5" Click="AddFach_Click" Style="{DynamicResource Orange}"/>
         </Grid>
-        
+
         <!-- Stundenplan -->
         <Grid Grid.Column="1" Grid.Row="1" x:Name="gStundenplan">
             <Grid.ColumnDefinitions>
@@ -60,7 +58,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -84,7 +82,7 @@
             <Label Grid.Row="0" Grid.Column="3" Content="{Binding Mittwoch}" HorizontalContentAlignment="Center"/>
             <Label Grid.Row="0" Grid.Column="4" Content="{Binding Donnerstag}" HorizontalContentAlignment="Center"/>
             <Label Grid.Row="0" Grid.Column="5" Content="{Binding Freitag}" HorizontalContentAlignment="Center"/>
-            
+
             <Label Grid.Row="1" Content="8:00"/>
             <Label Grid.Row="2" Content="8:45"/>
             <Label Grid.Row="3" Content="9:55"/>

@@ -5,33 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Stundenplan"
         mc:Ignorable="d"
-        Title="EditFach" Height="400" Width="400">
-    <Grid>
-        <StackPanel>
-            <WrapPanel>
-                <Label Content="Fach"/>
-                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Alle}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Raum: "/>
-                <TextBox x:Name="tbRaum" Width="100"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Info: "/>
-                <TextBox x:Name="tbInfo" Width="100" TextWrapping="Wrap" AcceptsReturn="True"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Länge"/>
-                <TextBox x:Name="tbLänge" Width="20"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Fällt aus: "/>
-                <RadioButton x:Name="rbFaelltAus" />
-            </WrapPanel>
-            <WrapPanel HorizontalAlignment="Center">
-                <Button Content="Speichern" Width="100" Click="Button_Click" Margin="0,0,5,0"/>
-                <Button Content="Löschen" Width="100" Click="Löschen_Click" Margin="5,0,0,0"/>
-            </WrapPanel>
-        </StackPanel>
+        ResizeMode="CanResize"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"      
+        Title="EditFach" Height="200"  Width="250">
+    <Grid Background="Orange">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Fach:"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="Raum: "/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Info: "/>
+        <Label Grid.Column="0" Grid.Row="3" Content="Länge:"/>
+        <Label Grid.Column="0" Grid.Row="4" Content="Fällt aus: "/>
+        <Button Grid.Column="0" Grid.Row="5" Content="Speichern" Width="75" Click="Button_Click" Style="{DynamicResource Orange}" Height="20" Margin="0,3"/>
+        <ComboBox x:Name="cbxFächer" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Alle}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="0,3" Height="20" Width="100" HorizontalAlignment="Left"/>
+        <TextBox x:Name="tbRaum" Grid.Column="1" Grid.Row="1" Width="100"  HorizontalAlignment="Left" Margin="0,3"/>
+        <TextBox x:Name="tbInfo" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,3" HorizontalAlignment="Left" AcceptsTab="True" Width="100" />
+        <TextBox x:Name="tbLänge" Grid.Column="1" Grid.Row="3" Width="20"  HorizontalAlignment="Left" Margin="0,3"/>
+        <RadioButton x:Name="rbFaelltAus" Grid.Column="1" Grid.Row="4" Height="20" HorizontalAlignment="Left" />
+        <Button Content="Löschen" Grid.Column="1" Grid.Row="5" Width="75" Click="Löschen_Click" Style="{DynamicResource Orange}" Height="20" Margin="0,3"/>
+
     </Grid>
 </Window>
