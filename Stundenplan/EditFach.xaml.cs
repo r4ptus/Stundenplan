@@ -71,10 +71,12 @@ namespace Stundenplan
                     Startzeit = (Fach.StartZeit)row - 1,
                     Wochentag = (Fach.WochenTag)col - 1
                 };
-                if(tbLänge.Text!=null && tbLänge.Text.Equals(""))//checking for userinput
+                if (tbLänge.Text == null )//checking for userinput
                 {
                     f.Length = 2;
                 }
+                else
+                    f.Length = Int32.Parse(tbLänge.Text);
                 ViewModel.CurrentUser.Stundenplan[b.Name] = f;
                 MainWindow.UpdateFach(f);
                 Close();
