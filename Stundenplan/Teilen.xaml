@@ -1,0 +1,23 @@
+﻿<Window x:Class="Stundenplan.Teilen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stundenplan"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Title="Teilen">
+    <Grid Background="Orange">
+        <StackPanel>
+            <Label Content="Name"/>
+            <TextBox x:Name="tbName" Width="100" HorizontalAlignment="Left" Margin="2.5,0,5,5"/>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Content="Teilen" Width="50" Margin="2.5" Style="{DynamicResource Orange}" Click="Teilen_Click"/>
+                <Button Content="Exportieren" Width="70" Margin="2.5" Style="{DynamicResource Orange}" Click="Exportieren_Click"/>
+            </WrapPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>

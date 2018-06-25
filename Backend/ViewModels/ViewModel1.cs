@@ -16,7 +16,6 @@ namespace Backend.ViewModels
         private string _mi;
         private string _do;
         private string _fr;
-        private User _currentUser;
 
         public string Montag
         {
@@ -36,6 +35,7 @@ namespace Backend.ViewModels
                 OnPropertyChanged(nameof(Dienstag));
             }
         }
+        public User CurrentUser { get; set; }
         public string Mittwoch
         {
             get { return _mi; }
@@ -63,20 +63,12 @@ namespace Backend.ViewModels
                 OnPropertyChanged(nameof(Freitag));
             }
         }
-        public User CurrentUser
-        {
-            get { return _currentUser; }
-            set
-            {
-                _currentUser = value;
-                OnPropertyChanged(nameof(CurrentUser));
-            }
-        }
         public ObservableCollection<Fach> Fächer { get; set; } //Liste von allen Fächern 
         public ObservableCollection<Fach> Übungen { get; set; } // Liste von allen Übungen
         public ObservableCollection<Fach> Alle { get; set; } //gemeinsame Liste von Fächern und Übungen
         public ObservableCollection<User> DeineFreunde { get; set; } //User die du hinzugefügt hast
         public ObservableCollection<User> AlleUser { get; set; } //Alle verfügbaren User
+        public ObservableCollection<String> Studiengänge { get; set; }
 
         public ViewModel1()
         {
@@ -85,6 +77,11 @@ namespace Backend.ViewModels
             Übungen = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
             Alle = new ObservableCollection<Fach>();
             AlleUser = new ObservableCollection<User>();//wird aus Datenbank gefüllt
+            Studiengänge = new ObservableCollection<string>
+            {
+                "B-IN",
+                "B-MC"
+            };
             //Dein Stundenplan du bistauch ein User
             DeineFreunde = new ObservableCollection<User>
             {

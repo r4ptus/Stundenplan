@@ -42,10 +42,16 @@
         <!-- Menu -->
         <Grid Grid.Row="1" Background="Orange">
             <StackPanel>
+                <Label>Studiengänge</Label>
+                <ComboBox x:Name="cbxStudiengänge"  ItemsSource="{Binding Studiengänge}" Margin="2.5"/>
                 <Label>Fächer</Label>
                 <ComboBox x:Name="cbxFächer"  ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="2.5"/>
             </StackPanel>
-            <Button VerticalAlignment="Bottom" Content="Fach Hinzufügen" Height="25" Margin="2,5" Click="AddFach_Click" Style="{DynamicResource Orange}"/>
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Content="Teilen" Height="25" Margin="2,5" Style="{DynamicResource Orange}" Click="Teilen_Click"/>
+                <Button  Content="Fach Hinzufügen" Height="25" Margin="2,5" Click="AddFach_Click" Style="{DynamicResource Orange}"/>
+
+            </StackPanel>
         </Grid>
 
         <!-- Stundenplan -->

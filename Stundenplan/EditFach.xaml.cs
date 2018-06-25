@@ -77,8 +77,11 @@ namespace Stundenplan
                 }
                 else
                     f.Length = Int32.Parse(tbLänge.Text);
-                ViewModel.CurrentUser.Stundenplan[b.Name] = f;
-                MainWindow.UpdateFach(f);
+                if(ViewModel.CurrentUser.Name.Equals(ViewModel.DeineFreunde[0].Name))
+                {
+                    ViewModel.DeineFreunde[0].Stundenplan[b.Name] = f;
+                    MainWindow.UpdateFach(f);
+                }
                 Close();
             }
         }
@@ -87,8 +90,12 @@ namespace Stundenplan
          **/
         private void Löschen_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.CurrentUser.Stundenplan.Remove(b.Name);
-            MainWindow.UpdateFach(null);
+            if (ViewModel.CurrentUser.Name.Equals(ViewModel.DeineFreunde[0].Name))
+            {
+                ViewModel.DeineFreunde[0].Stundenplan.Remove(b.Name);
+                MainWindow.UpdateFach(null);
+            }
+
             Close();
         }
 

@@ -54,7 +54,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Teilen.xaml.cs">
+      <DependentUpon>Teilen.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddFach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddFriend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -69,6 +76,9 @@
     <Compile Include="AddFach.xaml.cs">
       <DependentUpon>AddFach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddFriend.xaml.cs">
+      <DependentUpon>AddFriend.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -80,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Teilen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

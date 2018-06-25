@@ -1,4 +1,5 @@
-﻿using Backend.ViewModels;
+﻿using Backend.Models;
+using Backend.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,22 +17,22 @@ using System.Windows.Shapes;
 namespace Stundenplan
 {
     /// <summary>
-    /// Interaction logic for AddFach.xaml
+    /// Interaction logic for AddFriend.xaml
     /// </summary>
-    public partial class AddFach : Window
+    public partial class AddFriend : Window
     {
-        public ViewModel1 ViewModel => DataContext as ViewModel1;
-        public AddFach()
+        private ViewModel1 vm;
+        public AddFriend(ViewModel1 v)
         {
             InitializeComponent();
+            vm = v;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(tbName.Text!=null)
+            if (cbxFreunde.SelectedItem != null)
             {
-                ViewModel.Fächer.Add(new Backend.Models.Fach { Name = tbName.Text, });
-                ViewModel.Übungen.Add(new Backend.Models.Fach { Name = tbName.Text + "_Ü" });
+                vm.DeineFreunde.Add((User)cbxFreunde.SelectedItem);
                 Close();
             }
         }

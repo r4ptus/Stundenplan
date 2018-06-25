@@ -27,7 +27,7 @@ namespace Stundenplan
     {
         static Button btn;
 
-        private readonly ViewModel1 _viewModel1 = new ViewModel1();
+        public ViewModel1 _viewModel1 = new ViewModel1();
 
         public MainWindow()
         {
@@ -51,6 +51,8 @@ namespace Stundenplan
                     gStundenplan.Children.Add(b);
                 }
             }
+
+            DrawTable(_viewModel1.CurrentUser.Stundenplan);
         }
 
 
@@ -138,7 +140,10 @@ namespace Stundenplan
          **/
         private void AddFriend_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel1.DeineFreunde.Add(new User { Name = "Neu" });//placeholder
+            AddFriend addFriend = new AddFriend(_viewModel1);
+            addFriend.Owner = this;
+            addFriend.DataContext = _viewModel1;
+            addFriend.ShowDialog();
         }
         /**
          * zeigt dir den Stundenplan von einem Freund
@@ -146,7 +151,10 @@ namespace Stundenplan
         private void ChangeTimeTable_Click(object sender, RoutedEventArgs e)
         {
             ClearTable();
-            User u = ((FrameworkElement)sender).DataContext as User;
+            User u =  ((FrameworkElement)sender).DataContext as User;
+            User u2 = _viewModel1.DeineFreunde.First(x => x.Name.Equals(u.Name));
+            u = u2;
+            _viewModel1.CurrentUser = u;
             DrawTable(u.Stundenplan);
         }
         /**
@@ -196,6 +204,14 @@ namespace Stundenplan
         {
             var textbox = FindVisualChild<Button>(iControl.ItemContainerGenerator.ContainerFromIndex(0));
             FocusManager.SetFocusedElement(iControl, textbox);
+        }
+
+        private void Teilen_Click(object sender, RoutedEventArgs e)
+        {
+            Teilen t = new Teilen(_viewModel1, gStundenplan);
+            t.Owner = this;
+            t.DataContext = _viewModel1;
+            t.ShowDialog();
         }
     }
 }
