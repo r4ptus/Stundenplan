@@ -33,10 +33,12 @@ namespace Stundenplan
 
         private void Teilen_Click(object sender, RoutedEventArgs e)
         {
+            Dictionary<string, Fach> s = new Dictionary<string, Fach>();
+            s = vm.DeineFreunde[0].Stundenplan;
             User user = new User
             {
                 Name = tbName.Text,
-                Stundenplan = vm.CurrentUser.Stundenplan
+                Stundenplan = s
             };
             vm.AlleUser.Add(user);
             Close();

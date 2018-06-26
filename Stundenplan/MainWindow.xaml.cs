@@ -36,9 +36,9 @@ namespace Stundenplan
 
             this.Loaded += new RoutedEventHandler(ThisWindowLoaded);
 
-            for (int i = 1; i<=14;i++)
+            for (int i = 1; i <= 14; i++)
             {
-                for(int j = 1;j<=5;j++)
+                for (int j = 1; j <= 5; j++)
                 {
                     Button b = new Button();
                     b.Name = "btn" + i.ToString() + j.ToString();
@@ -52,7 +52,7 @@ namespace Stundenplan
                 }
             }
 
-            DrawTable(_viewModel1.CurrentUser.Stundenplan);
+            DrawTable(_viewModel1.DeineFreunde[0].Stundenplan);
         }
 
 

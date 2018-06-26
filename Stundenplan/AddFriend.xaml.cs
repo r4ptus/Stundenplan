@@ -32,7 +32,16 @@ namespace Stundenplan
         {
             if (cbxFreunde.SelectedItem != null)
             {
-                vm.DeineFreunde.Add((User)cbxFreunde.SelectedItem);
+                User u = new User();
+                u = (User)cbxFreunde.SelectedItem;
+                Dictionary<string, Fach> d = new Dictionary<string, Fach>();
+
+                foreach(KeyValuePair<string,Fach> entry in u.Stundenplan )
+                {
+                    d.Add(entry.Key,entry.Value);
+                }
+                
+                vm.DeineFreunde.Add(new User { Name = u.Name,Stundenplan = d});
                 Close();
             }
         }

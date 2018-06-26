@@ -98,7 +98,7 @@ namespace Backend.ViewModels
             Donnerstag = "Donnerstag, " + string.Join("", Enumerable.Range(0, 1).Select(i => startOfWeek.AddDays(3).ToString("dd.MM")));
             Freitag = "Freitag, " + string.Join("", Enumerable.Range(0, 1).Select(i => startOfWeek.AddDays(4).ToString("dd.MM")));
 
-            CurrentUser = DeineFreunde.First(u => u.Name.Equals("Du"));
+            CurrentUser = DeineFreunde[0];
         }
     }
 }
