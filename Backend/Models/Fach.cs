@@ -15,6 +15,9 @@ namespace Backend.Models
         private int _lenght;
         private bool _pflichtfach = true;
 
+        public Fach()
+        {
+        }
         public Fach(String name, bool pflicht)
         {
             this._name = name;
@@ -84,7 +87,7 @@ namespace Backend.Models
 
         int IComparable<Fach>.CompareTo(Fach other)
         {
-            int comp = _pflichtfach.CompareTo(other._pflichtfach);
+           int comp = _pflichtfach.CompareTo(other._pflichtfach);
            if(comp == 0)
             {
                 return _name.CompareTo(other._name);

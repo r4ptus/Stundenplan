@@ -69,9 +69,14 @@ namespace Backend.ViewModels
         public ObservableCollection<User> DeineFreunde { get; set; } //User die du hinzugefügt hast
         public ObservableCollection<User> AlleUser { get; set; } //Alle verfügbaren User
         public ObservableCollection<String> Studiengänge { get; set; }
+        public INFaecher Inf { get; set; }
+        public MCFaecher Mcf { get; set; }
 
         public ViewModel1()
         {
+             Inf = new INFaecher();
+             Mcf = new MCFaecher();
+
             //Initialisierung aller Collections
             Fächer = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
             Übungen = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
@@ -99,6 +104,7 @@ namespace Backend.ViewModels
             Freitag = "Freitag, " + string.Join("", Enumerable.Range(0, 1).Select(i => startOfWeek.AddDays(4).ToString("dd.MM")));
 
             CurrentUser = DeineFreunde[0];
+ 
         }
     }
 }

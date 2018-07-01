@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Models
 {
-    class INFaecher: FaecherListe
+    public class INFaecher: FaecherListe
     {
         public INFaecher()
         {
@@ -58,7 +58,7 @@ namespace Backend.Models
             faecherListe.Add(new Fach("GRAF2", false));
             faecherListe.Add(new Fach("BI", false));
             faecherListe.Add(new Fach("SQUAL", false));
-            faecherListe.Add(new Fach("ADMIN", false));
+            //faecherListe.Add(new Fach("ADMIN", false)); kommt doppelt vor
             faecherListe.Add(new Fach("SEMA", false));
             faecherListe.Add(new Fach("IMAN", false));
             faecherListe.Add(new Fach("BWLWP", false));

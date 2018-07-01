@@ -34,6 +34,7 @@ namespace Stundenplan
             DataContext = _viewModel1;
 
             this.Loaded += new RoutedEventHandler(ThisWindowLoaded);
+            cbxStudiengänge.SelectionChanged += new SelectionChangedEventHandler(StudienGangChanged);
 
             for (int i = 1; i <= 14; i++)
             {
@@ -50,9 +51,7 @@ namespace Stundenplan
                     gStundenplan.Children.Add(b);
                 }
             }
-
-            
-           
+       
             DrawTable(_viewModel1.DeineFreunde[0].Stundenplan);
         }
 
@@ -205,6 +204,27 @@ namespace Stundenplan
         {
             var textbox = FindVisualChild<Button>(iControl.ItemContainerGenerator.ContainerFromIndex(0));
             FocusManager.SetFocusedElement(iControl, textbox);
+        }
+
+        private void StudienGangChanged(object sender, RoutedEventArgs e)
+        {
+            _viewModel1.Fächer.Clear();
+            if(cbxStudiengänge.SelectedItem.ToString().Equals("B-IN"))
+            {
+                foreach(Fach f in _viewModel1.Inf.GetFaecherListe())
+                {
+                    _viewModel1.Fächer.Add(f);
+                    _viewModel1.Übungen.Add(new Fach { Name = f.Name + "_Ü" });
+                }
+            }
+            else if(cbxStudiengänge.SelectedItem.ToString().Equals("B-MC"))
+            {
+                foreach (Fach f in _viewModel1.Mcf.GetFaecherListe())
+                {
+                    _viewModel1.Fächer.Add(f);
+                    _viewModel1.Übungen.Add(new Fach { Name = f.Name + "_Ü" });
+                }
+            }
         }
 
         private void Teilen_Click(object sender, RoutedEventArgs e)

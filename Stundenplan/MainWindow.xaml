@@ -45,7 +45,7 @@
                 <Label>Studiengänge</Label>
                 <ComboBox x:Name="cbxStudiengänge"  ItemsSource="{Binding Studiengänge}" Margin="2.5"/>
                 <Label>Fächer</Label>
-                <ComboBox x:Name="cbxFächer"  ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="2.5"/>
+                <ComboBox x:Name="cbxFächer" ItemsSource="{Binding Fächer}" DisplayMemberPath="Name" SelectedValuePath="Name" Margin="2.5"/>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom">
                 <Button Content="Teilen" Height="25" Margin="2,5" Style="{DynamicResource Orange}" Click="Teilen_Click"/>
@@ -55,7 +55,7 @@
         </Grid>
 
         <!-- Stundenplan -->
-        <Grid Grid.Column="1" Grid.Row="1" x:Name="gStundenplan">
+        <Grid Background="White" Grid.Column="1" Grid.Row="1" x:Name="gStundenplan">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Models
 {
-    class MCFaecher: FaecherListe
+    public class MCFaecher: FaecherListe
     {
         public MCFaecher()
         {
