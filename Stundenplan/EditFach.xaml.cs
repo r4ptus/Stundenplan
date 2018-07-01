@@ -45,7 +45,7 @@ namespace Stundenplan
             {
                 f = ViewModel.CurrentUser.Stundenplan[b.Name];
             }
-            if(f!=null)//Setzt die vorhanden Properies
+            if(f!=null)//Setzt die vorhanden Properties
             {
                 cbxFächer.SelectedValue = f.Name;
                 tbRaum.Text = f.Raum;

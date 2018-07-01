@@ -26,7 +26,6 @@ namespace Stundenplan
     public partial class MainWindow : Window
     {
         static Button btn;
-
         public ViewModel1 _viewModel1 = new ViewModel1();
 
         public MainWindow()
@@ -52,6 +51,8 @@ namespace Stundenplan
                 }
             }
 
+            
+           
             DrawTable(_viewModel1.DeineFreunde[0].Stundenplan);
         }
 
@@ -213,5 +214,7 @@ namespace Stundenplan
             t.DataContext = _viewModel1;
             t.ShowDialog();
         }
+
+       
     }
 }

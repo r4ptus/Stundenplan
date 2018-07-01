@@ -6,17 +6,24 @@ using System.Threading.Tasks;
 
 namespace Backend.Models
 {
-    public class Fach : BaseNotificationClass
+    public class Fach : BaseNotificationClass, IComparable<Fach>
     {
         private string _name;
         private string _raum;
         private string _info;
         private bool _fdindesStatt = false;
         private int _lenght;
+        private bool _pflichtfach = true;
+
+        public Fach(String name, bool pflicht)
+        {
+            this._name = name;
+            this._pflichtfach = pflicht;
+        }
 
         public enum StartZeit { S0800, S0845, S0955, S1040, S1145, S1230, S1400, S1445, S1545, S1630, S1730, S1825, S1915, S2000 }
         public enum WochenTag { Mo, Di, Mi, Do, Fr}
-
+        
         public string Name
         {
             get{ return _name; }
@@ -64,6 +71,25 @@ namespace Backend.Models
                 _fdindesStatt = value;
                 OnPropertyChanged(nameof(Name));
             }
+        }
+
+        public bool Pflichtfach
+        {
+            get { return _pflichtfach; }
+            set
+            {
+               _pflichtfach = value;
+            }
+        }
+
+        int IComparable<Fach>.CompareTo(Fach other)
+        {
+            int comp = _pflichtfach.CompareTo(other._pflichtfach);
+           if(comp == 0)
+            {
+                return _name.CompareTo(other._name);
+            }
+            return comp;
         }
     }
 }

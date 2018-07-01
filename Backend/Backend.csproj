@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseNotificationClass.cs" />
+    <Compile Include="Models\FaecherListe.cs" />
     <Compile Include="Models\Fach.cs" />
+    <Compile Include="Models\INFaecher.cs" />
+    <Compile Include="Models\MCFaecher.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ViewModel1.cs" />
