@@ -209,6 +209,7 @@ namespace Stundenplan
         private void StudienGangChanged(object sender, RoutedEventArgs e)
         {
             _viewModel1.Fächer.Clear();
+            _viewModel1.Übungen.Clear();
             if(cbxStudiengänge.SelectedItem.ToString().Equals("B-IN"))
             {
                 foreach(Fach f in _viewModel1.Inf.GetFaecherListe())
@@ -220,6 +221,14 @@ namespace Stundenplan
             else if(cbxStudiengänge.SelectedItem.ToString().Equals("B-MC"))
             {
                 foreach (Fach f in _viewModel1.Mcf.GetFaecherListe())
+                {
+                    _viewModel1.Fächer.Add(f);
+                    _viewModel1.Übungen.Add(new Fach { Name = f.Name + "_Ü" });
+                }
+            }
+            else if (cbxStudiengänge.SelectedItem.ToString().Equals("other"))
+            {
+                foreach (Fach f in _viewModel1.Other)
                 {
                     _viewModel1.Fächer.Add(f);
                     _viewModel1.Übungen.Add(new Fach { Name = f.Name + "_Ü" });

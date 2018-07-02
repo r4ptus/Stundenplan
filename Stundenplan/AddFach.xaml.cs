@@ -30,8 +30,7 @@ namespace Stundenplan
         {
             if(tbName.Text!=null)
             {
-                ViewModel.Fächer.Add(new Backend.Models.Fach { Name = tbName.Text, Pflichtfach = (bool)cbPflichtfach.IsChecked });
-                ViewModel.Übungen.Add(new Backend.Models.Fach { Name = tbName.Text + "_Ü", Pflichtfach = false });
+                ViewModel.Other.Add(new Backend.Models.Fach { Name = tbName.Text, Pflichtfach = (bool)cbPflichtfach.IsChecked });
                 Close();
             }
         }

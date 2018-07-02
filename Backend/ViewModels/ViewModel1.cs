@@ -64,6 +64,7 @@ namespace Backend.ViewModels
             }
         }
         public ObservableCollection<Fach> Fächer { get; set; } //Liste von allen Fächern 
+        public ObservableCollection<Fach> Other { get; set; } //Liste mit selbsterstellten Fächern
         public ObservableCollection<Fach> Übungen { get; set; } // Liste von allen Übungen
         public ObservableCollection<Fach> Alle { get; set; } //gemeinsame Liste von Fächern und Übungen
         public ObservableCollection<User> DeineFreunde { get; set; } //User die du hinzugefügt hast
@@ -78,14 +79,16 @@ namespace Backend.ViewModels
              Mcf = new MCFaecher();
 
             //Initialisierung aller Collections
-            Fächer = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
-            Übungen = new ObservableCollection<Fach>();//wird aus Datenbank gefüllt
-            Alle = new ObservableCollection<Fach>();
+            Fächer = new ObservableCollection<Fach>(); //Automatisch in Mainwindow.cs
+            Übungen = new ObservableCollection<Fach>(); //Automatisch in MainWindow.cs
+            Other = new ObservableCollection<Fach>();//Wird aus Datenbank gefüllt
+            Alle = new ObservableCollection<Fach>(); //Automatisch in EditFach
             AlleUser = new ObservableCollection<User>();//wird aus Datenbank gefüllt
             Studiengänge = new ObservableCollection<string>
             {
                 "B-IN",
-                "B-MC"
+                "B-MC",
+                "other"
             };
             //Dein Stundenplan du bistauch ein User
             DeineFreunde = new ObservableCollection<User>
