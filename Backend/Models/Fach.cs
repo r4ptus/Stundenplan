@@ -87,7 +87,7 @@ namespace Backend.Models
 
         int IComparable<Fach>.CompareTo(Fach other)
         {
-           int comp = _pflichtfach.CompareTo(other._pflichtfach);
+           int comp = other._pflichtfach.CompareTo(_pflichtfach);
            if(comp == 0)
             {
                 return _name.CompareTo(other._name);
