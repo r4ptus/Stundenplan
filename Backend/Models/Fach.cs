@@ -8,12 +8,13 @@ namespace Backend.Models
 {
     public class Fach : BaseNotificationClass, IComparable<Fach>
     {
-        private string _name;
-        private string _raum;
-        private string _info;
+        private string _name = "";
+        private string _raum = "";
+        private string _info = "";
         private bool _fdindesStatt = false;
-        private int _lenght;
+        private int _lenght = 0;
         private bool _pflichtfach = true;
+        private int _id = -1;
 
         public Fach()
         {
@@ -24,9 +25,19 @@ namespace Backend.Models
             this._pflichtfach = pflicht;
         }
 
-        public enum StartZeit { S0800, S0845, S0955, S1040, S1145, S1230, S1400, S1445, S1545, S1630, S1730, S1825, S1915, S2000 }
-        public enum WochenTag { Mo, Di, Mi, Do, Fr}
-        
+        public enum StartZeit { S0800, S0845, S0955, S1040, S1145, S1230, S1400, S1445, S1545, S1630, S1730, S1825, S1915, S2000,None }
+        public enum WochenTag { Mo, Di, Mi, Do, Fr,None}
+
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+
         public string Name
         {
             get{ return _name; }
@@ -54,7 +65,6 @@ namespace Backend.Models
                 OnPropertyChanged(nameof(Info));
             }
         }
-        public string Studiengang { get; set; }
         public int Length
         {
             get { return _lenght; }
@@ -64,8 +74,8 @@ namespace Backend.Models
                 OnPropertyChanged(nameof(Length));
             }
         }
-        public StartZeit Startzeit { get; set; }
-        public WochenTag Wochentag { get; set; }
+        public StartZeit Startzeit { get; set; } = StartZeit.None;
+        public WochenTag Wochentag { get; set; } = WochenTag.None;
         public bool FälltAus
         {
             get { return _fdindesStatt; }

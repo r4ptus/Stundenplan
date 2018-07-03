@@ -32,8 +32,10 @@ namespace Stundenplan
         {
             InitializeComponent();
             DataContext = _viewModel1;
+           
+            Loaded += new RoutedEventHandler(ThisWindowLoaded);
+            Closing += new CancelEventHandler(ThisWindowClosed);
 
-            this.Loaded += new RoutedEventHandler(ThisWindowLoaded);
             cbxStudiengänge.SelectionChanged += new SelectionChangedEventHandler(StudienGangChanged);
 
             for (int i = 1; i <= 14; i++)
@@ -52,7 +54,7 @@ namespace Stundenplan
                 }
             }
        
-            DrawTable(_viewModel1.DeineFreunde[0].Stundenplan);
+            //DrawTable(_viewModel1.DeineFreunde[0].Stundenplan);
         }
 
 
@@ -202,8 +204,42 @@ namespace Stundenplan
          **/
         private void ThisWindowLoaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                DataReader reader = new DataReader("data.xml");
+
+                foreach (Fach f in reader.GetFaecher())
+                {
+                    _viewModel1.Other.Add(f);
+                }
+
+                _viewModel1.DeineFreunde[0].Stundenplan = reader.GetFirstStundenplan();
+                if (_viewModel1.DeineFreunde[0].Stundenplan == null)
+                    _viewModel1.DeineFreunde[0].Stundenplan = new Dictionary<string, Fach>();
+                _viewModel1.CurrentUser = _viewModel1.DeineFreunde[0];
+                DrawTable(_viewModel1.CurrentUser.Stundenplan);
+            }
+            catch { }
+
+
+    
             var textbox = FindVisualChild<Button>(iControl.ItemContainerGenerator.ContainerFromIndex(0));
             FocusManager.SetFocusedElement(iControl, textbox);
+        }
+
+        private void ThisWindowClosed(object sender, CancelEventArgs e)
+        {
+
+            DataWriter.Create("data.xml");
+            DataWriter writer = new DataWriter("data.xml");
+            
+            foreach(Fach f in _viewModel1.Other)
+            {
+                writer.AddFach(f);
+            }
+    
+            writer.AddStundenplan("DU",_viewModel1.CurrentUser.Stundenplan);
+
         }
 
         private void StudienGangChanged(object sender, RoutedEventArgs e)

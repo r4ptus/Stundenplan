@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseNotificationClass.cs" />
+    <Compile Include="Models\DataReader.cs" />
+    <Compile Include="Models\DataWriter.cs" />
     <Compile Include="Models\FaecherListe.cs" />
     <Compile Include="Models\Fach.cs" />
     <Compile Include="Models\INFaecher.cs" />
