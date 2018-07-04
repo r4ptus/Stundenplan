@@ -77,6 +77,7 @@ namespace Backend.Models
                 fach.Info = fachNode.Attribute("Info").Value;
                 fach.Raum = fachNode.Attribute("Raum").Value;
                 fach.Length = Convert.ToInt32(fachNode.Attribute("Laenge").Value);
+                fach.FälltAus = Convert.ToBoolean(fachNode.Attribute("Fälltaus").Value);
                 if (fachNode.Attribute("Startzeit").Value == "")
                     fach.Startzeit = Fach.StartZeit.None;
                 else

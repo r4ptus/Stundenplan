@@ -88,7 +88,8 @@ namespace Backend.Models
                     new XAttribute("Info", fach.Info ?? ""),
                     new XAttribute("Startzeit", fach.Startzeit == Fach.StartZeit.None ? "" : fach.Startzeit.ToString()),
                     new XAttribute("Wochentag", fach.Wochentag == Fach.WochenTag.None ? "" : fach.Wochentag.ToString()),
-                    new XAttribute("Laenge", fach.Length.ToString()));
+                    new XAttribute("Laenge", fach.Length.ToString()),
+                    new XAttribute("Fälltaus", fach.FälltAus));
                 newPlan.Add(fachNode);
             }
             stundenPlaeneNode.Add(newPlan);
